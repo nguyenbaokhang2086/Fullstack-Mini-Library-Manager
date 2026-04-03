@@ -149,7 +149,7 @@ const AuthorsPage = () => {
                       </div>
                     </td>
                     <td className="px-8 py-8 text-right">
-                      <div className="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                      <div className="flex items-center justify-end gap-1 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-200">
                         <button onClick={() => { setSelectedAuthor(author); setEditOpen(true); }} className="p-2.5 rounded-xl text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 transition-all"><Pencil className="w-4 h-4" /></button>
                         <button onClick={() => { setSelectedAuthor(author); setDeleteOpen(true); }} className="p-2.5 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-all"><Trash2 className="w-4 h-4" /></button>
                       </div>
