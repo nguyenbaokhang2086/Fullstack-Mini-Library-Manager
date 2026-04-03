@@ -22,7 +22,7 @@ const app = express();
 // ── CORS ─────────────────────────────────────
 const allowedOrigins = [
   'https://app.com',
-  'https://admin.app.com',
+  'https://fullstack-mini-library-manager.vercel.app',
   'http://localhost:3000',
   'http://localhost:5173', // Vite dev server
 ];
