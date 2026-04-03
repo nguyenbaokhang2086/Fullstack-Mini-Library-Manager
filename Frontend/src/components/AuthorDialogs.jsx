@@ -18,6 +18,20 @@ import {
 } from '@/components/ui/dialog';
 import { authorAPI } from '@/lib/api';
 
+const formatBirthDateForAPI = (dateString) => {
+  if (!dateString) return '';
+  const parts = dateString.split(/[\/\-]/);
+  if (parts.length === 3) {
+    if (parts[2].length === 4) {
+      return `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`;
+    }
+    if (parts[0].length === 4) {
+      return `${parts[0]}-${parts[1].padStart(2, '0')}-${parts[2].padStart(2, '0')}`;
+    }
+  }
+  return dateString;
+};
+
 // ─────────────────────────────────────────────
 // ADD AUTHOR DIALOG
 // ─────────────────────────────────────────────
@@ -43,7 +57,11 @@ export const AddAuthorDialog = ({ open, onClose, onSuccess }) => {
     setLoading(true);
     setError('');
     try {
-      const res = await authorAPI.create(form);
+      const payload = { ...form };
+      if (payload.birthDate) {
+        payload.birthDate = formatBirthDateForAPI(payload.birthDate);
+      }
+      const res = await authorAPI.create(payload);
       onSuccess?.(res.data || res);
       // Xóa draft sau khi thành công
       localStorage.removeItem('author_draft');
@@ -107,7 +125,7 @@ export const AddAuthorDialog = ({ open, onClose, onSuccess }) => {
                 value={form.birthDate}
                 onChange={handleChange}
                 type="text"
-                placeholder="YYYY-MM-DD (e.g. 1950-01-01)"
+                placeholder="DD/MM/YYYY hoặc YYYY-MM-DD"
                 className="bg-[#F8FAFC] border-none text-slate-900 h-14 rounded-2xl pr-12"
               />
             </div>
@@ -161,7 +179,7 @@ export const EditAuthorDialog = ({ open, onClose, author, onSuccess }) => {
     if (author) {
       setForm({
         name: author.name || '',
-        birthDate: author.birthDate ? new Date(author.birthDate).toISOString().split('T')[0] : '',
+        birthDate: author.birthDate ? new Date(author.birthDate).toLocaleDateString('en-GB') : '',
         bio: author.bio || '',
       });
     }
@@ -174,7 +192,11 @@ export const EditAuthorDialog = ({ open, onClose, author, onSuccess }) => {
     setLoading(true);
     setError('');
     try {
-      const res = await authorAPI.update(author._id, form);
+      const payload = { ...form };
+      if (payload.birthDate) {
+        payload.birthDate = formatBirthDateForAPI(payload.birthDate);
+      }
+      const res = await authorAPI.update(author._id, payload);
       onSuccess?.(res.data || res);
       onClose();
     } catch (err) {
@@ -233,7 +255,7 @@ export const EditAuthorDialog = ({ open, onClose, author, onSuccess }) => {
                 value={form.birthDate}
                 onChange={handleChange}
                 type="text"
-                placeholder="YYYY-MM-DD (e.g. 1950-01-01)"
+                placeholder="DD/MM/YYYY hoặc YYYY-MM-DD"
                 className="bg-[#F8FAFC] border-none text-slate-900 h-14 rounded-2xl pr-12"
               />
             </div>
