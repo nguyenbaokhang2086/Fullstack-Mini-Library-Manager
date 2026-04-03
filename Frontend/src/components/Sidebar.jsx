@@ -23,7 +23,7 @@ const navItems = [
 
 const Sidebar = ({ activePage = 'authors', onPageChange }) => {
   return (
-    <div className="w-64 h-screen bg-[#F8FAFC] border-r border-slate-200 flex flex-col p-6 font-sans shrink-0">
+    <div className="w-64 h-full bg-[#F8FAFC] border-r border-slate-200 flex flex-col p-6 font-sans shrink-0">
       {/* Logo Section */}
       <div className="flex items-center gap-3 mb-10 pl-2">
         <div className="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-100">

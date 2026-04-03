@@ -59,7 +59,7 @@ const StatsPage = () => {
 
   return (
     <div className="space-y-10 animate-in fade-in slide-in-from-bottom-2 duration-700 pb-20">
-      <div className="flex justify-between items-end">
+      <div className="flex flex-col md:flex-row md:justify-between items-start md:items-end gap-6">
         <header className="flex flex-col gap-1">
           <h1 className="text-3xl font-black text-slate-900 tracking-tightest uppercase">Library Analytics</h1>
           <p className="text-slate-500 font-bold text-xs uppercase tracking-widest mt-1 opacity-60">Deep-dive into borrowing trends and collection popularity.</p>

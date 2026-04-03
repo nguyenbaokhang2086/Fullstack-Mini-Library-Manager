@@ -78,7 +78,7 @@ const BorrowingsPage = () => {
 
   return (
     <div className="space-y-10 animate-in fade-in slide-in-from-bottom-2 duration-700">
-      <div className="flex justify-between items-end">
+      <div className="flex flex-col md:flex-row md:justify-between items-start md:items-end gap-6">
         <div className="space-y-1">
           <h1 className="text-3xl font-black text-slate-900 tracking-tightest uppercase">Borrowings Management</h1>
           <p className="text-slate-500 font-bold text-xs max-w-lg leading-relaxed opacity-70">
@@ -115,9 +115,9 @@ const BorrowingsPage = () => {
          </div>
       </div>
 
-      <div className="bg-white rounded-[24px] shadow-sm border border-slate-100 overflow-hidden">
+      <div className="bg-white rounded-[24px] shadow-sm border border-slate-100 overflow-x-auto">
         {loading ? renderLoading() : (
-          <table className="w-full text-left border-collapse">
+          <table className="w-full text-left border-collapse min-w-[1000px]">
             <thead>
               <tr className="border-b border-slate-50">
                 <th className="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">Book Title</th>

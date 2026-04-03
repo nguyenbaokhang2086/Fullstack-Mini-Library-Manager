@@ -83,7 +83,7 @@ const BooksPage = () => {
 
   return (
     <div className="space-y-10 animate-in fade-in slide-in-from-bottom-2 duration-700">
-      <div className="flex justify-between items-end">
+      <div className="flex flex-col md:flex-row md:justify-between items-start md:items-end gap-6">
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-indigo-500">
             <span>LUMINA LIBRARY</span>
@@ -105,9 +105,9 @@ const BooksPage = () => {
         </Button>
       </div>
 
-      <div className="bg-white rounded-[32px] shadow-sm border border-slate-100 overflow-hidden">
+      <div className="bg-white rounded-[32px] shadow-sm border border-slate-100 overflow-x-auto">
         {loading ? renderLoading() : error ? renderError() : (
-          <table className="w-full text-left border-collapse">
+          <table className="w-full text-left border-collapse min-w-[900px]">
             <thead>
               <tr className="border-b border-slate-50">
                 <th className="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">TITLE</th>
